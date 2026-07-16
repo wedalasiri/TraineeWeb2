@@ -150,3 +150,156 @@ function updateUI() {
     }
 
 }
+// ================================
+// Attendance Button
+// ================================
+
+attendanceBtn.onclick = async () => {
+
+
+    const ref = doc(
+        db,
+        "attendance",
+        username,
+        "records",
+        todayKey
+    );
+
+
+    const snap = await getDoc(ref);
+
+
+
+    // ================= CHECK IN =================
+
+   // ================= CHECK IN =================
+
+if(!didCheckIn){
+
+
+    // فحص الموقع قبل تسجيل الحضور
+
+    const inside =
+    await locationManager.startLocationUpdates();
+
+
+
+    if(!inside){
+
+        alert(
+        "You are outside the work location"
+        );
+
+        return;
+
+    }
+
+
+
+    const now = new Date();
+
+
+    const time =
+    now.toLocaleTimeString("en-US",{
+        hour:"numeric",
+        minute:"2-digit"
+    });
+
+
+
+    await setDoc(ref,{
+
+        fullName: username,
+
+        employeeId: employeeId,
+
+        department: department,
+
+        workLocation: workLocation,
+
+        date: todayKey,
+
+        checkIn: time,
+
+        checkOut:"--:--",
+
+        status:"Present",
+
+        checkInTimestamp:
+        Timestamp.now()
+
+    });
+
+
+    checkInSpan.textContent = time;
+
+
+    didCheckIn = true;
+
+
+    updateUI();
+
+
+    return;
+
+}
+
+    // ================= CHECK OUT =================
+
+
+    if(didCheckIn && !didCheckOut){
+
+
+        if(!canCheckOut){
+
+
+            alert(
+            "You can check out after 15 minutes from check in."
+            );
+
+
+            return;
+
+        }
+
+
+
+        const now = new Date();
+
+
+        const time =
+        now.toLocaleTimeString("en-US",{
+
+            hour:"numeric",
+            minute:"2-digit"
+
+        });
+
+
+
+        await updateDoc(ref,{
+
+
+            checkOut: time
+
+
+        });
+
+
+
+        checkOutSpan.textContent = time;
+
+
+        didCheckOut = true;
+
+
+        updateUI();
+
+
+        return;
+
+    }
+
+
+
+};
