@@ -1,32 +1,27 @@
-// Import Firebase
-
+// Firebase SDK
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
 
-import {
-    getFirestore
-} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+import { getFirestore } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
-import {
-    getAuth,
-    signInAnonymously
-} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
+import { getAuth } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
 
 
-// Firebase Config
+// Firebase Configuration
 
 const firebaseConfig = {
 
-    apiKey: "YOUR_API_KEY",
+    apiKey: "AIzaSyDX9n_L5MsuTCP5FiBk9mbZtlpYj0MqRvM",
 
-    authDomain: "YOUR_PROJECT.firebaseapp.com",
+    authDomain: "saudico-trainee.firebaseapp.com",
 
-    projectId: "YOUR_PROJECT_ID",
+    projectId: "saudico-trainee",
 
-    storageBucket: "YOUR_PROJECT.appspot.com",
+    storageBucket: "saudico-trainee.firebasestorage.app",
 
-    messagingSenderId: "YOUR_SENDER_ID",
+    messagingSenderId: "410401427797",
 
-    appId: "YOUR_APP_ID"
+    appId: "1:410401427797:web:0e84d5d249802f1dafdfdc"
+
 };
 
 
@@ -35,30 +30,22 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 
-// Services
+// Firestore
 
-export const db = getFirestore(app);
-
-export const auth = getAuth(app);
+const db = getFirestore(app);
 
 
-// Anonymous Login
-export async function firebaseLogin(){
+// Authentication
 
-    try{
+const auth = getAuth(app);
 
-        await signInAnonymously(auth);
 
-        console.log("Firebase Connected");
+// Export
 
-    }
+export {
 
-    catch(error){
+    db,
 
-        console.error(error);
+    auth
 
-        throw error;
-
-    }
-
-}
+};

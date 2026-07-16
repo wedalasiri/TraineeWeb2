@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Attendance</title>
+
+    <link rel="stylesheet" href="css/dashboard.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="background">
+
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Side Menu -->
+
+    <aside id="sidebar">
+
+        <button id="closeMenu">✕</button>
+
+        <a href="dashboard.html">Today's Status</a>
+
+        <a href="history.html">Attendance History</a>
+
+        <a href="index.html">Logout</a>
+
+    </aside>
+
+
+    <!-- Header -->
+
+    <header class="header">
+
+        <button id="menuBtn">
+
+            ☰
+
+        </button>
+
+        <h2>
+
+            Welcome,
+
+            <span id="username"></span>
+
+            👋
+
+        </h2>
+
+        <div style="width:35px;"></div>
+
+    </header>
+
+
+    <!-- Main -->
+
+    <main class="page">
+
+        <section class="statusCard">
+
+            <h3>Today's Status</h3>
+
+            <div id="statusText" class="statusText">
+
+                Not Checked In
+
+            </div>
+
+            <div class="timeRow">
+
+                <span>Check In</span>
+
+                <span id="checkIn">--:--</span>
+
+            </div>
+
+            <div class="timeRow">
+
+                <span>Check Out</span>
+
+                <span id="checkOut">--:--</span>
+
+            </div>
+
+            <div class="infoBox">
+
+                <div class="circle" id="locationDot"></div>
+
+                <span id="locationStatus">
+
+                    Checking Location...
+
+                </span>
+
+            </div>
+
+      
+            <button id="attendanceBtn">
+
+                Check In
+
+            </button>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script type="module" src="js/dashboard.js"></script>
+
+</body>
+
+</html>

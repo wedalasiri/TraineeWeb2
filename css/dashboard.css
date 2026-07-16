@@ -1,0 +1,357 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:url("../background.jpeg") center center/cover no-repeat;
+}
+
+.background{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+}
+
+/* ================= HEADER ================= */
+
+.header{
+
+    background:#587584;
+
+    height:130px;
+
+    border-bottom-left-radius:35px;
+    border-bottom-right-radius:35px;
+
+    display:flex;
+
+    align-items:flex-end;
+
+    justify-content:space-between;
+
+    padding:25px;
+
+    color:#fff;
+
+    flex-shrink:0;
+}
+
+.header h2{
+
+    flex:1;
+
+    text-align:center;
+
+    font-weight:500;
+
+    font-size:clamp(20px,2vw,28px);
+}
+
+#menuBtn{
+
+    background:none;
+
+    border:none;
+
+    color:white;
+
+    font-size:32px;
+
+    cursor:pointer;
+}
+
+/* ================= MAIN ================= */
+
+.page{
+
+    flex:1;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:30px 20px;
+}
+
+/* ================= CARD ================= */
+
+.statusCard{
+
+    width:min(92vw,400px);
+
+    height:min(72vh,620px);
+
+    background:white;
+
+    border-radius:32px;
+
+    padding:28px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.12);
+
+}
+.statusCard h3{
+
+    font-size:22px;
+
+    font-weight:700;
+
+    margin-bottom:45px;
+
+}
+
+.statusText{
+
+    text-align:center;
+
+    font-size:32px;
+
+    font-weight:600;
+
+    margin-bottom:45px;
+
+}
+.timeRow{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:12px 0;
+
+    font-size:18px;
+
+    color:#666;
+
+}
+
+.timeRow span:first-child{
+
+    font-weight:500;
+
+}
+
+.timeRow span:last-child{
+
+    color:#444;
+
+}
+
+/* ================= LOCATION ================= */
+
+.infoBox{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:10px;
+
+    margin-top:22px;
+
+    color:#587584;
+
+    font-size:17px;
+
+}
+
+.circle{
+
+    width:16px;
+
+    height:16px;
+
+    border-radius:50%;
+
+    background:red;
+}
+
+/* ================= BUTTON ================= */
+
+#attendanceBtn{
+
+    margin-top:auto;
+
+    width:100%;
+
+    height:65px;
+
+    border:none;
+
+    border-radius:35px;
+
+    background:#587584;
+
+    color:white;
+
+    font-size:22px;
+
+    font-weight:500;
+
+    cursor:pointer;
+
+}
+
+#attendanceBtn:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:0 8px 18px rgba(0,0,0,.15);
+}
+
+/* ================= SIDEBAR ================= */
+
+#sidebar{
+
+    position:fixed;
+
+    top:0;
+
+    left:-290px;
+
+    width:280px;
+
+    height:100vh;
+
+    background:#587584;
+
+    padding:35px 25px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    transition:.35s;
+
+    z-index:1000;
+}
+
+#sidebar.active{
+
+    left:0;
+}
+
+#sidebar button{
+
+    background:none;
+
+    border:none;
+
+    color:white;
+
+    font-size:30px;
+
+    cursor:pointer;
+
+    align-self:flex-start;
+
+    margin-bottom:40px;
+}
+
+#sidebar a{
+
+    text-decoration:none;
+
+    color:white;
+
+    font-size:22px;
+
+    margin-bottom:28px;
+}
+
+/* ================= OVERLAY ================= */
+
+.overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.3);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:.3s;
+
+    z-index:999;
+}
+
+.overlay.active{
+
+    opacity:1;
+
+    visibility:visible;
+}
+
+/* ================= MOBILE ================= */
+@media(max-width:768px){
+
+.header{
+
+    height:120px;
+
+    padding:20px;
+
+}
+
+.header h2{
+
+    font-size:20px;
+
+}
+
+.page{
+
+    padding:18px;
+
+}
+
+.statusCard{
+
+    width:100%;
+
+    max-width:390px;
+
+    height:75vh;
+
+    padding:25px;
+
+}
+
+.statusText{
+
+    font-size:28px;
+
+}
+
+.timeRow{
+
+    font-size:17px;
+
+}
+
+#attendanceBtn{
+
+    height:60px;
+
+    font-size:20px;
+
+}
+
+}
