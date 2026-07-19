@@ -8,51 +8,74 @@ const usernameInput = document.getElementById("username");
 const passwordInput = document.getElementById("password");
 const loginBtn = document.getElementById("loginBtn");
 const error = document.getElementById("error");
+const btnText = document.getElementById("btnText");
+const loader = document.getElementById("loader");
 
 loginBtn.addEventListener("click", login);
 
 async function login() {
 
     error.innerHTML = "";
+    loginBtn.disabled = true;
+btnText.textContent = "Signing in...";
+loader.classList.add("show");
 
     const username = usernameInput.value.trim();
     const password = passwordInput.value;
 
-    if(username === "" || password === ""){
+   if(username === "" || password === ""){
 
-        error.innerHTML = "Please enter username and password";
-        return;
+    error.innerHTML = "Please enter username and password";
 
-    }
+    loginBtn.disabled = false;
+    btnText.textContent = "Login";
+    loader.classList.remove("show");
+
+    return;
+}
 
     try{
 
         const token = await getMoodleToken(username,password);
 
-        if(!token){
+       if(!token){
 
-            error.innerHTML="Incorrect username or password";
-            return;
+    error.innerHTML="Incorrect username or password";
 
-        }
+    loginBtn.disabled = false;
+    btnText.textContent = "Login";
+    loader.classList.remove("show");
+
+    return;
+
+}
 
         const user = await getUserInfo(token,username);
 
-        if(!user){
+      if(!user){
 
-            error.innerHTML="Unable to load user information";
-            return;
+    error.innerHTML="Unable to load user information from moodle";
 
-        }
+    loginBtn.disabled = false;
+    btnText.textContent = "Login";
+    loader.classList.remove("show");
 
+    return;
+
+}
         const job = getCustomField(user,"job");
 
         if(!job.toLowerCase().includes("trainee")){
 
-            error.innerHTML="Access denied";
-            return;
+    error.innerHTML="Access denied";
 
-        }
+    loginBtn.disabled = false;
+    btnText.textContent = "Login";
+    loader.classList.remove("show");
+
+    return;
+
+}
 
         await signInAnonymously(auth);
 
@@ -79,11 +102,15 @@ async function login() {
 
     catch(e){
 
-        console.log(e);
+    console.log(e);
 
-        error.innerHTML="Login Failed";
+    error.innerHTML = "Login Failed";
 
-    }
+    loginBtn.disabled = false;
+    btnText.textContent = "Login";
+    loader.classList.remove("show");
+
+}
 
 }
 
