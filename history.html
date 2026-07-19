@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance History</title>
+
+<link rel="stylesheet" href="css/history.css"></head>
+<body>
+
+<div class="background">
+
+    <header class="header">
+        <button id="menuBtn">&#9776;</button>
+
+        <h1>Attendance History</h1>
+    </header>
+
+    <aside class="sidebar" id="sidebar">
+
+        <button id="closeMenu">✕</button>
+
+        <a href="dashboard.html">Today's Status</a>
+        <a href="history.html">Attendance History</a>
+        <a href="index.html">Logout</a>
+
+    </aside>
+
+    <div class="overlay" id="overlay"></div>
+
+    <main id="historyContainer">
+
+    </main>
+
+</div>
+
+<div id="loader" class="loader">
+    <div class="spinner"></div>
+</div>
+
+<script type="module" src="js/history.js"></script>
+
+</body>
+</html>

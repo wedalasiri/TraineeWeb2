@@ -1,0 +1,230 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Poppins,sans-serif;
+}
+
+body{
+    background:url("../background.jpeg") center/cover no-repeat;
+    min-height:100vh;
+}
+
+.background{
+    min-height:100vh;
+}
+
+/* HEADER */
+
+.header{
+
+    height:120px;
+    background:#5C7584;
+
+    border-bottom-left-radius:35px;
+    border-bottom-right-radius:35px;
+
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+
+    padding:25px;
+    position:relative;
+}
+
+.header h1{
+
+    color:white;
+    font-size:34px;
+    font-weight:500;
+}
+
+#menuBtn{
+
+    position:absolute;
+    left:25px;
+    bottom:25px;
+
+    font-size:35px;
+    color:white;
+    background:none;
+    border:none;
+    cursor:pointer;
+}
+
+/* HISTORY */
+
+#historyContainer{
+
+    max-width:700px;
+    margin:auto;
+    padding:35px;
+
+    display:flex;
+    flex-direction:column;
+    gap:25px;
+}
+
+.card{
+
+    background:white;
+
+    border-radius:30px;
+
+    padding:35px;
+
+    text-align:center;
+
+    box-shadow:0 10px 20px rgba(0,0,0,.08);
+}
+
+.card .date{
+
+    color:#777;
+
+    font-size:24px;
+
+    margin-bottom:25px;
+}
+
+.card .status{
+
+    font-size:40px;
+
+    font-weight:500;
+
+    margin-bottom:25px;
+}
+
+.times{
+
+    color:#777;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+
+    font-size:22px;
+}
+
+/* MENU */
+
+.sidebar{
+
+    position:fixed;
+
+    top:0;
+
+    left:-280px;
+
+    width:280px;
+
+    height:100%;
+
+    background:#5C7584;
+
+    transition:.3s;
+
+    display:flex;
+
+    flex-direction:column;
+
+    padding:40px 30px;
+
+    gap:30px;
+
+    z-index:100;
+}
+
+.sidebar.show{
+    left:0;
+}
+
+.sidebar a{
+
+    color:white;
+
+    text-decoration:none;
+
+    font-size:26px;
+}
+
+#closeMenu{
+
+    align-self:flex-start;
+
+    font-size:30px;
+
+    color:white;
+
+    background:none;
+
+    border:none;
+
+    cursor:pointer;
+}
+
+.overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.3);
+
+    display:none;
+}
+
+.overlay.show{
+    display:block;
+}
+
+/* LOADER */
+
+.loader{
+
+    position:fixed;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:rgba(0,0,0,.25);
+
+    visibility:hidden;
+}
+
+.loader.show{
+    visibility:visible;
+}
+
+.spinner{
+
+    width:70px;
+
+    height:70px;
+
+    border:6px solid #ddd;
+
+    border-top:6px solid #5C7584;
+
+    border-radius:50%;
+
+    animation:spin .8s linear infinite;
+}
+
+@keyframes spin{
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+}
