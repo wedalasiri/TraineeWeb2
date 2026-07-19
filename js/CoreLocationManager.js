@@ -15,6 +15,7 @@ export class LocationManager {
         this.currentLocationName = "";
 
         this.assignedWorkLocation = null;
+        this.watchId = null;
 
 
         this.allLocations = [
@@ -114,81 +115,61 @@ export class LocationManager {
 
     // تشغيل GPS
 
-    startLocationUpdates(){
+  startLocationUpdates(){
 
+    return new Promise((resolve,reject)=>{
 
-        return new Promise((resolve,reject)=>{
+        if(!navigator.geolocation){
 
+            reject("GPS not supported");
+            return;
 
-            if(!navigator.geolocation){
+        }
 
-                reject(
-                    "GPS not supported"
-                );
+        // إذا المراقبة بدأت قبل لا نعيد طلب الموقع
+        if(this.watchId !== null){
 
-                return;
+            this.checkDistance();
+            resolve(this.isInsideWorkArea);
+            return;
+
+        }
+
+        this.watchId = navigator.geolocation.watchPosition(
+
+            position=>{
+
+                this.userLocation = {
+
+                    latitude: position.coords.latitude,
+                    longitude: position.coords.longitude
+
+                };
+
+                this.checkDistance();
+
+                resolve(this.isInsideWorkArea);
+
+            },
+
+            error=>{
+
+                reject(error);
+
+            },
+
+            {
+
+                enableHighAccuracy:true,
+                maximumAge:5000
 
             }
 
+        );
 
+    });
 
-            navigator.geolocation.getCurrentPosition(
-
-                position=>{
-
-
-                    this.userLocation = {
-
-
-                        latitude:
-                        position.coords.latitude,
-
-
-                        longitude:
-                        position.coords.longitude
-
-
-                    };
-
-
-
-                    this.checkDistance();
-
-
-
-                    resolve(
-                        this.isInsideWorkArea
-                    );
-
-                },
-
-
-                error=>{
-
-
-                    console.log(error);
-
-
-                    reject(error);
-
-
-                },
-
-
-                {
-                    enableHighAccuracy:true
-                }
-
-
-            );
-
-
-        });
-
-
-    }
-
-
+}
 
 
 

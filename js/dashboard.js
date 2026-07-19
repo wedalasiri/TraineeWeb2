@@ -19,9 +19,7 @@ const locationManager = new LocationManager();
 
 locationManager.setAssignedLocation(workLocation);
 
-updateLocationStatus();
-
-setInterval(updateLocationStatus, 10000);
+startLocationTracking();
 
 document.getElementById("username").textContent = username;
 
@@ -54,31 +52,50 @@ const locationDot = document.getElementById("locationDot");
 const locationStatus = document.getElementById("locationStatus");
 const attendanceBtn = document.getElementById("attendanceBtn");
 
-async function updateLocationStatus() {
+function updateLocationStatus(){
 
-    try {
+    if(locationManager.isInsideWorkArea){
 
-        locationStatus.textContent = "Checking Location...";
-        locationDot.style.background = "orange";
+        locationStatus.textContent =
+        "Inside Work Location";
 
-        const inside = await locationManager.startLocationUpdates();
+        locationDot.style.background =
+        "#2ECC71";
 
-        if (inside) {
+    }
 
-            locationStatus.textContent = "Inside Work Location";
-            locationDot.style.background = "#2ECC71";
+    else{
 
-        } else {
+        locationStatus.textContent =
+        "Outside Work Location";
 
-            locationStatus.textContent = "Outside Work Location";
-            locationDot.style.background = "#E74C3C";
+        locationDot.style.background =
+        "#E74C3C";
 
-        }
+    }
 
-    } catch (error) {
+}
 
-        locationStatus.textContent = "Location Unavailable";
-        locationDot.style.background = "#E74C3C";
+
+async function startLocationTracking(){
+
+    try{
+
+        await locationManager.startLocationUpdates();
+
+        updateLocationStatus();
+
+        setInterval(updateLocationStatus,3000);
+
+    }
+
+    catch{
+
+        locationStatus.textContent =
+        "Location Unavailable";
+
+        locationDot.style.background =
+        "#E74C3C";
 
     }
 
@@ -295,59 +312,60 @@ try {
     // ================= CHECK OUT =================
 
 
-    if(didCheckIn && !didCheckOut){
+   if(didCheckIn && !didCheckOut){
 
+    if(!canCheckOut){
 
-        if(!canCheckOut){
-
-
-            alert(
-            "You can check out after 15 minutes from check in."
-            );
-
-
-            return;
-
-        }
-
-
-
-        const now = new Date();
-
-
-        const time =
-        now.toLocaleTimeString("en-US",{
-
-            hour:"numeric",
-            minute:"2-digit"
-
-        });
-
-
-
-        await updateDoc(ref,{
-
-
-            checkOut: time
-
-
-        });
-
-
-
-        checkOutSpan.textContent = time;
-
-
-        didCheckOut = true;
-
-
-        updateUI();
-
+        alert(
+        "You can check out after 15 minutes from check in."
+        );
 
         return;
 
     }
 
+    // التحقق من الموقع قبل تسجيل الانصراف
+    try {
+
+        const inside = await locationManager.startLocationUpdates();
+
+        if (!inside) {
+
+            alert("You are outside the work location.");
+
+            return;
+
+        }
+
+    } catch (error) {
+
+        alert("Please enable location services.");
+
+        return;
+
+    }
+
+    const now = new Date();
+
+    const time =
+    now.toLocaleTimeString("en-US",{
+        hour:"numeric",
+        minute:"2-digit"
+    });
+
+    await updateDoc(ref,{
+        checkOut: time
+    });
+
+    checkOutSpan.textContent = time;
+
+    didCheckOut = true;
+
+    updateUI();
+
+    return;
+
+}
 
 
 };
