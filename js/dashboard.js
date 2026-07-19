@@ -1,4 +1,5 @@
 import { db } from "./firebase.js";
+import { LocationManager } from "./CoreLocationManager.js";
 
 import {
     doc,
@@ -12,6 +13,11 @@ const username = sessionStorage.getItem("username");
 const employeeId = sessionStorage.getItem("employeeId");
 const department = sessionStorage.getItem("department");
 const workLocation = sessionStorage.getItem("workLocation");
+
+
+const locationManager = new LocationManager();
+
+locationManager.setAssignedLocation(workLocation);
 
 document.getElementById("username").textContent = username;
 
@@ -184,17 +190,21 @@ if(!didCheckIn){
 
 
 
-    if(!inside){
+  try {
 
-        alert(
-        "You are outside the work location"
-        );
+    const inside = await locationManager.startLocationUpdates();
 
+    if (!inside) {
+        alert("You are outside the work location.");
         return;
-
     }
 
+} catch (error) {
 
+    alert("Please enable location services.");
+    return;
+
+}
 
     const now = new Date();
 

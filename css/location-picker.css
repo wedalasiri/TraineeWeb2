@@ -1,0 +1,142 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:url("../background.jpeg") center center/cover no-repeat;
+}
+
+.background{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:30px;
+}
+
+.card{
+
+    width:100%;
+    max-width:600px;
+
+    background:rgba(255,255,255,.96);
+
+    border-radius:30px;
+
+    padding:35px;
+
+    box-shadow:0 15px 30px rgba(0,0,0,.15);
+}
+
+.card h2{
+
+    text-align:center;
+
+    margin-bottom:15px;
+
+    color:#222;
+}
+
+.card p{
+
+    text-align:center;
+
+    color:#666;
+
+    margin-bottom:30px;
+
+    line-height:1.6;
+}
+
+.locations{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+    margin-bottom:30px;
+}
+
+.location-card{
+
+    border:1px solid #ddd;
+
+    border-radius:15px;
+
+    padding:18px 20px;
+
+    cursor:pointer;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    background:white;
+
+    transition:.25s;
+}
+
+.location-card:hover{
+
+    border-color:#5C7584;
+}
+
+.location-card.selected{
+
+    background:rgba(92,117,132,.12);
+
+    border:2px solid #5C7584;
+}
+
+.location-name{
+
+    font-size:17px;
+}
+
+.check{
+
+    font-size:22px;
+
+    color:#5C7584;
+
+    display:none;
+}
+
+.location-card.selected .check{
+
+    display:block;
+}
+
+#confirmBtn{
+
+    width:100%;
+
+    height:55px;
+
+    border:none;
+
+    border-radius:28px;
+
+    background:#5C7584;
+
+    color:white;
+
+    font-size:18px;
+
+    cursor:pointer;
+}
+
+#confirmBtn:disabled{
+
+    background:#bdbdbd;
+
+    cursor:not-allowed;
+}

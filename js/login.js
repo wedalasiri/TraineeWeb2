@@ -67,7 +67,7 @@ loader.classList.add("show");
 
         if(!job.toLowerCase().includes("trainee")){
 
-    error.innerHTML="Access denied";
+    error.innerHTML="Access denied , you can't login cuz you are not trainee ";
 
     loginBtn.disabled = false;
     btnText.textContent = "Login";
@@ -87,17 +87,38 @@ loader.classList.add("show");
         const department =
             getCustomField(user,"department");
 
-        const location =
-            getCustomField(user,"location");
+    let location = getCustomField(user, "location");
 
-        sessionStorage.setItem("username",fullName);
-        sessionStorage.setItem("employeeId",employeeId);
-        sessionStorage.setItem("department",department);
-        sessionStorage.setItem("workLocation",location);
-        sessionStorage.setItem("token",token);
+sessionStorage.setItem("username", fullName);
+sessionStorage.setItem("employeeId", employeeId);
+sessionStorage.setItem("department", department);
+sessionStorage.setItem("token", token);
 
-        window.location.href="dashboard.html";
+// إذا Moodle رجع الموقع
+if (location && location.trim() !== "") {
 
+    sessionStorage.setItem("workLocation", location);
+
+    // نحفظه للجلسات القادمة
+    localStorage.setItem("workLocation", location);
+
+    window.location.href = "dashboard.html";
+    return;
+}
+
+// إذا Moodle ما رجع الموقع
+const savedLocation = localStorage.getItem("workLocation");
+
+if (savedLocation) {
+
+    sessionStorage.setItem("workLocation", savedLocation);
+
+    window.location.href = "dashboard.html";
+    return;
+}
+
+// أول مرة فقط
+window.location.href = "location-picker.html";
     }
 
     catch(e){
