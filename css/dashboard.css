@@ -36,6 +36,8 @@ body{
     position:relative;
 
     padding:0 20px;
+
+    color:#fff;
 }
 
 .header h2{
@@ -44,9 +46,11 @@ body{
 
     text-align:center;
 
+    font-weight:600;
+
     font-size:28px;
 
-    font-weight:600;
+    padding:0 55px;
 }
 
 #menuBtn{
@@ -82,50 +86,50 @@ body{
 
     align-items:center;
 
-    padding:30px 20px;
+    padding:20px;
 }
 
 /* ================= CARD ================= */
 
 .statusCard{
 
-    width:min(92vw,380px);
+    width:min(90vw,340px);
 
-    min-height:470px;
+    min-height:420px;
 
     background:white;
 
-    border-radius:28px;
+    border-radius:24px;
 
-    padding:24px;
+    padding:20px;
 
     display:flex;
 
     flex-direction:column;
 
-    box-shadow:0 10px 25px rgba(0,0,0,.12);
+    box-shadow:0 10px 20px rgba(0,0,0,.12);
 }
+
 .statusCard h3{
 
-    font-size:22px;
+    font-size:20px;
 
     font-weight:700;
 
-    margin-bottom:45px;
-
+    margin-bottom:20px;
 }
 
 .statusText{
 
     text-align:center;
 
-    font-size:32px;
+    font-size:26px;
 
     font-weight:600;
 
-    margin-bottom:45px;
-
+    margin-bottom:20px;
 }
+
 .timeRow{
 
     display:flex;
@@ -134,24 +138,21 @@ body{
 
     align-items:center;
 
-    padding:12px 0;
+    padding:8px 0;
 
-    font-size:18px;
+    font-size:17px;
 
     color:#666;
-
 }
 
 .timeRow span:first-child{
 
     font-weight:500;
-
 }
 
 .timeRow span:last-child{
 
     color:#444;
-
 }
 
 /* ================= LOCATION ================= */
@@ -164,21 +165,22 @@ body{
 
     align-items:center;
 
-    gap:10px;
+    gap:8px;
 
-    margin-top:22px;
+    margin-top:18px;
+
+    margin-bottom:18px;
 
     color:#587584;
 
-    font-size:17px;
-
+    font-size:15px;
 }
 
 .circle{
 
-    width:16px;
+    width:14px;
 
-    height:16px;
+    height:14px;
 
     border-radius:50%;
 
@@ -189,26 +191,27 @@ body{
 
 #attendanceBtn{
 
-   margin-top:25px;
+    margin-top:20px;
 
     width:100%;
 
-    height:65px;
+    height:56px;
 
     border:none;
 
-    border-radius:35px;
+    border-radius:30px;
 
     background:#587584;
 
     color:white;
 
-    font-size:22px;
+    font-size:18px;
 
-    font-weight:500;
+    font-weight:600;
 
     cursor:pointer;
 
+    transition:.3s;
 }
 
 #attendanceBtn:hover{
@@ -305,93 +308,90 @@ body{
 }
 
 /* ================= MOBILE ================= */
+
 @media (max-width:768px){
 
 .header{
-    height:90px;
-    padding:18px;
-    justify-content:center;
-    align-items:center;
-    position:relative;
+
+    height:85px;
 }
 
 .header h2{
-    font-size:24px;
-    font-weight:600;
-    text-align:center;
+
+    font-size:22px;
+
+    padding:0 45px;
 }
 
 #menuBtn{
-    position:absolute;
-    left:18px;
-    top:50%;
-    transform:translateY(-50%);
+
+    left:16px;
+
     font-size:28px;
 }
 
 .page{
-    padding:18px 16px;
+
+    padding:16px;
 }
 
 .statusCard{
+
     width:100%;
-    max-width:380px;
-    height:auto;
-    min-height:520px;
-    padding:24px;
-    border-radius:26px;
+
+    max-width:330px;
+
+    min-height:390px;
+
+    padding:18px;
 }
 
 .statusCard h3{
-    font-size:20px;
-    margin-bottom:30px;
+
+    font-size:18px;
+
+    margin-bottom:16px;
 }
 
 .statusText{
-    font-size:28px;
-    margin-bottom:30px;
+
+    font-size:24px;
+
+    margin-bottom:16px;
 }
 
 .timeRow{
-    font-size:16px;
-    padding:10px 0;
+
+    font-size:15px;
+
+    padding:7px 0;
 }
 
 .infoBox{
 
-    display:flex;
+    font-size:14px;
 
-    justify-content:center;
+    margin-top:14px;
 
-    align-items:center;
-
-    gap:8px;
-
-    margin-top:18px;
-
-    margin-bottom:20px;
-
-    color:#587584;
-
-    font-size:16px;
-}
-
-.circle{
-    width:14px;
-    height:14px;
+    margin-bottom:14px;
 }
 
 #attendanceBtn{
-    height:58px;
-    font-size:19px;
-    border-radius:30px;
+
+    height:52px;
+
+    font-size:17px;
+
+    margin-top:16px;
 }
 
 #sidebar{
+
     width:240px;
 }
 
 #sidebar a{
+
     font-size:20px;
 }
 
