@@ -272,6 +272,7 @@ export class LocationManager {
 
         Math.sin(dLat/2) *
         Math.sin(dLat/2)
+        
 
         +
 

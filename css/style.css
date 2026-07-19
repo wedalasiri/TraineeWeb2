@@ -19,7 +19,7 @@ body{
     justify-content:center;
     align-items:center;
 
-    background:url("background.jpeg");
+    background:url("../background.jpeg") center center/cover no-repeat;
     background-size:cover;
     background-position:center;
     background-repeat:no-repeat;
