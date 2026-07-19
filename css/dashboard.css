@@ -18,22 +18,18 @@ body{
 
 /* ================= HEADER ================= */
 
+
+
 .header{
-
     background:#587584;
-
     height:95px;
 
     border-bottom-left-radius:30px;
     border-bottom-right-radius:30px;
 
-    display:flex;
-
-    justify-content:center;
-
+    display:grid;
+    grid-template-columns:50px 1fr 50px;
     align-items:center;
-
-    position:relative;
 
     padding:0 20px;
 
