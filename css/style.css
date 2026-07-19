@@ -48,6 +48,7 @@ body{
 .logo{
 
     width:270px;
+    max-width:100%;
     margin:auto;
 }
 
@@ -139,26 +140,42 @@ button:active{
     font-size:14px;
 }
 
-@media(max-width:600px){
+@media(max-width:768px){
+
+.background{
+    padding:20px;
+}
 
 .login-card{
-
-    padding:35px 25px;
+    max-width:100%;
+    padding:40px 28px;
+    border-radius:30px;
 }
 
 .logo{
-
-    width:140px;
+    width:220px;
+    max-width:85%;
 }
 
 h2{
+    font-size:30px;
+}
 
-    font-size:28px;
+.subtitle{
+    font-size:15px;
+    margin-top:0;
+    margin-bottom:20px;
+}
+
+.input-group input{
+    height:60px;
+    font-size:18px;
 }
 
 button{
-
-    height:52px;
+    height:60px;
+    font-size:20px;
+    border-radius:35px;
 }
 
 }

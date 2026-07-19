@@ -228,3 +228,62 @@ body{
     }
 
 }
+
+
+/* ================= MOBILE ONLY ================= */
+
+@media (max-width:768px){
+
+.header{
+    height:90px;
+    padding:18px;
+    align-items:center;
+}
+
+.header h1{
+    font-size:24px;
+    text-align:center;
+}
+
+#menuBtn{
+    left:18px;
+    top:50%;
+    bottom:auto;
+    transform:translateY(-50%);
+    font-size:28px;
+}
+
+#historyContainer{
+    padding:18px;
+    gap:18px;
+}
+
+.card{
+    padding:22px;
+    border-radius:24px;
+}
+
+.card .date{
+    font-size:18px;
+    margin-bottom:18px;
+}
+
+.card .status{
+    font-size:30px;
+    margin-bottom:18px;
+}
+
+.times{
+    font-size:17px;
+    gap:8px;
+}
+
+.sidebar{
+    width:240px;
+}
+
+.sidebar a{
+    font-size:20px;
+}
+
+}
