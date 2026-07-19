@@ -17,41 +17,52 @@ body{
 /* HEADER */
 
 .header{
-
-    height:120px;
     background:#5C7584;
+
+    height:calc(90px + env(safe-area-inset-top));
+
+    padding-top:env(safe-area-inset-top);
 
     border-bottom-left-radius:35px;
     border-bottom-right-radius:35px;
 
     display:flex;
-    align-items:flex-end;
     justify-content:center;
+    align-items:center;
 
-    padding:25px;
     position:relative;
 }
 
 .header h1{
 
     color:white;
-    font-size:34px;
-    font-weight:500;
-}
 
+    font-size:24px;
+
+    font-weight:500;
+
+    margin:0;
+}
 #menuBtn{
 
     position:absolute;
-    left:25px;
-    bottom:25px;
 
-    font-size:35px;
+    left:18px;
+
+    top:calc(env(safe-area-inset-top) + 45px);
+
+    transform:translateY(-50%);
+
+    font-size:28px;
+
     color:white;
+
     background:none;
+
     border:none;
+
     cursor:pointer;
 }
-
 /* HISTORY */
 
 #historyContainer{

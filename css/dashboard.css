@@ -19,38 +19,35 @@ body{
 /* ================= HEADER ================= */
 
 .header{
-
     background:#587584;
 
     height:95px;
 
-    border-bottom-left-radius:30px;
-    border-bottom-right-radius:30px;
-
     display:flex;
-
+    align-items:center;
     justify-content:center;
 
-    align-items:center;
-
     position:relative;
+
+    border-bottom-left-radius:30px;
+    border-bottom-right-radius:30px;
 
     padding:0 20px;
 }
 
 .header h2{
-
-    width:100%;
-
-    text-align:center;
+    color:white;
 
     font-size:28px;
 
     font-weight:600;
+
+    margin:0;
+
+    text-align:center;
 }
 
 #menuBtn{
-
     position:absolute;
 
     left:20px;
@@ -65,9 +62,11 @@ body{
 
     color:white;
 
-    font-size:30px;
+    font-size:28px;
 
     cursor:pointer;
+
+    padding:0;
 }
 
 /* ================= MAIN ================= */
