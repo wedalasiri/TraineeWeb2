@@ -19,6 +19,10 @@ const locationManager = new LocationManager();
 
 locationManager.setAssignedLocation(workLocation);
 
+updateLocationStatus();
+
+setInterval(updateLocationStatus, 10000);
+
 document.getElementById("username").textContent = username;
 
 const menuBtn = document.getElementById("menuBtn");
@@ -49,6 +53,36 @@ const checkOutSpan = document.getElementById("checkOut");
 const locationDot = document.getElementById("locationDot");
 const locationStatus = document.getElementById("locationStatus");
 const attendanceBtn = document.getElementById("attendanceBtn");
+
+async function updateLocationStatus() {
+
+    try {
+
+        locationStatus.textContent = "Checking Location...";
+        locationDot.style.background = "orange";
+
+        const inside = await locationManager.startLocationUpdates();
+
+        if (inside) {
+
+            locationStatus.textContent = "Inside Work Location";
+            locationDot.style.background = "#2ECC71";
+
+        } else {
+
+            locationStatus.textContent = "Outside Work Location";
+            locationDot.style.background = "#E74C3C";
+
+        }
+
+    } catch (error) {
+
+        locationStatus.textContent = "Location Unavailable";
+        locationDot.style.background = "#E74C3C";
+
+    }
+
+}
 
 let didCheckIn = false;
 let didCheckOut = false;
@@ -185,23 +219,27 @@ if(!didCheckIn){
 
     // فحص الموقع قبل تسجيل الحضور
 
-    const inside =
-    await locationManager.startLocationUpdates();
+    // const inside =
+    // await locationManager.startLocationUpdates();
 
 
 
-  try {
+try {
 
     const inside = await locationManager.startLocationUpdates();
 
     if (!inside) {
+
         alert("You are outside the work location.");
+
         return;
+
     }
 
 } catch (error) {
 
     alert("Please enable location services.");
+
     return;
 
 }
